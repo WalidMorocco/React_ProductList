@@ -1,25 +1,36 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
+import FetchingData from './components/FetchingData';
+import { Outlet, useNavigate } from "react-router-dom";
+
 function App() {
+  const navigate = useNavigate();
+
+
+  const handleShowFetchDataDemo = () => {
+    navigate('/products');
+  };
+
+  const handleShoHome = () => {
+    navigate('/');
+  };
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <div >
+      <button className="button" onClick={handleShoHome}>
+        Home
+      </button>
+      
+      <button className="button" onClick={handleShowFetchDataDemo}>
+        Products
+      </button>
+
+    <Outlet />
+  </div>
   );
+  
 }
 
 export default App;
